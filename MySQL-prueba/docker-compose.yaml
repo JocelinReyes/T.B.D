@@ -1,0 +1,18 @@
+services:
+  database:
+    image: mysql:8.0
+    ports:
+      - 3307:3306
+    volumes:
+      - ./mysql/:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 121121
+      MYSQL_DATABASE: prueba
+      MYSQL_USER: yoshi
+      MYSQL_PASSWORD: 121121yoshiii
+  flask:
+    build: ./app
+    ports:
+      - 5000:5000
+    depends_on:
+      - database
